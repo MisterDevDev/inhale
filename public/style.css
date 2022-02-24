@@ -43,6 +43,7 @@ button:hover {
 @media (min-width: 800px) {
   .mainBody {
     flex-direction: row;
+    height: 800px;
   }
 }
 
@@ -191,6 +192,10 @@ button:hover {
 
 .nav-open .hamburger::after {
   opacity: 0;
+}
+
+@media (min-width: 800px) {
+  
 }
 
 /* --- Banner --- */
@@ -391,6 +396,7 @@ button:hover {
 /* ----- carousel ------ */
 
 .carousel {
+  margin:0
 }
 
 
@@ -410,6 +416,7 @@ button:hover {
 .imgContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 10px;
   background-color: antiquewhite;
 }
@@ -444,6 +451,11 @@ button:hover {
   height: 100%;
 }
 
+@media(min-width: 900px){
+  .imgContainer{
+    height: 800px;
+  }
+}
 /* --- Details1 --- */
 
 .details1 {

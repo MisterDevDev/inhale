@@ -10,7 +10,6 @@ import Features from "./Components/Features";
 const Router = () => {
   return (
     <div>
-      <Banner />
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/carousel" element={<Carousel />} />
