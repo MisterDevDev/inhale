@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { carouselData } from "./carouselData";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
   const length = carouselData.length;
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-    return null
-  };
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -21,16 +15,17 @@ const Carousel = () => {
   if (!Array.isArray(carouselData) || carouselData.length <= 0) {
     return null;
   }
+  
+    const continuousRotate = setTimeout(function () { nextSlide()}, 5000);
 
-  setTimeout(function () { nextSlide()}, 5000); 
-
-
-    console.log(current)
+    useEffect(() => { 
+      return function cleanup(){
+        clearTimeout(continuousRotate)
+      }
+    })
 
   return (
     <section className="carousel">
-      {/* <FaArrowAltCircleLeft className="left-arrow" onClick={() => prevSlide()} />
-      <FaArrowAltCircleRight className="right-arrow" onClick={() => nextSlide()} /> */}
       {carouselData.map((slide, index) => {
         return (
           <div

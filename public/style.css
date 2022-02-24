@@ -1,13 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
 
 * {
   margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-weight: 300;
-  --def: #96B7C4;   
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+  --def: #96b7c4;
   --inv: black;
+}
+
+body {
+  background-color: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto
+}
+
+section {
+  margin: 1em auto;
+  max-width: 100%;
 }
 
 :root {
@@ -18,30 +35,34 @@ button:hover {
   cursor: pointer;
 }
 
+.mainBody {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 800px) {
+  .mainBody {
+    flex-direction: row;
+  }
+}
+
+/* --- General Templates --- */
+
+.flexSpace {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* ----------Navbar.js CSS---------- */
 
 .navbar {
   display: flex;
   justify-content: flex-end;
-  background-color: #24252A;
+  background-color: #24252a;
   width: 100%;
-  height: 6vh;
+  height: 8vh;
   align-items: center;
-}
-
-.fp-navbar {
-  display: flex;
-  position: absolute;
-  justify-content: flex-end;
-  background-color: transparent;
-  width: 100%;
-  height: 6vh;
-  align-items: center;
-}
-
-.navbar-link {
-  color: white;
-  text-decoration: none;
 }
 
 .navbar-logo {
@@ -50,14 +71,82 @@ button:hover {
   margin-left: 2%;
 }
 
-.navbar-item {
-  padding: 0px 20px;
+.navbar-wrapper {
+  position: fixed;
+  background: black;
+  color: white;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(0.5, 0, 0.5, 1);
 }
 
-.navbar-wrapper {
+.nav__list {
+  list-style: none;
   display: flex;
-  justify-content: start;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
   align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.fp-underline {
+  display: inline-block;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar__item:hover {
+  color: var(--clr-accent);
+}
+
+.nav-toggle {
+  padding: 0.5em;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 1000;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  background: white;
+  width: 2rem;
+  height: 3px;
+  border-radius: 1em;
+  transition: transform 250ms ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hamburger::before {
+  top: 6px;
+}
+.hamburger::after {
+  bottom: 6px;
 }
 
 .navbar-item-text {
@@ -66,16 +155,8 @@ button:hover {
   cursor: pointer;
 }
 
-#fp-underline {
-  display: inline-block;
-  position: relative;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#fp-underline:after {
-  content: '';
+.fp-underline:after {
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -87,17 +168,74 @@ button:hover {
   transition: transform 0.25s ease-out;
 }
 
-#fp-underline:hover:after {
+.fp-underline:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-/* ----------FrontPage.js CSS---------- */
-
-.fp {
-  display: flex;
-  height: 100vh;
+.nav-open .navbar-wrapper {
+  transform: translateX(0);
 }
+
+.nav-open .nav-toggle {
+  position: fixed;
+}
+
+.nav-open .hamburger {
+  transform: rotate(0.625turn);
+}
+
+.nav-open .hamburger::before {
+  transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after {
+  opacity: 0;
+}
+
+/* --- Banner --- */
+
+.bannerContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  max-width: 100%;
+  height: 8rem;
+  border-bottom: 2px black solid;
+  background-color: antiquewhite;
+}
+
+.middleBanner-left {
+  width: 0%
+}
+
+.middleBanner-right {
+  width: 0%
+}
+
+.rightBanner{
+  width: 0%
+}
+
+@media (min-width: 800px) {
+  .rightBanner {
+    width: auto
+  }
+}
+
+@media (min-width: 900px) {
+  .middleBanner-left{
+    width: auto
+  }
+}
+
+@media (min-width:1200px) {
+  .middleBanner-right{
+    width: auto
+  }
+}
+
+/* ----------FrontPage.js CSS---------- */
 
 .fp-left-wrapper {
   height: 100vh;
@@ -108,24 +246,34 @@ button:hover {
 }
 
 .fp-left {
-  flex: 1;
   display: flex;
   justify-content: center;
-  background-color: #96B7C4;
+  background-color: #96b7c4;
 }
 
 .fp-right {
-  flex: 1.5;
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  min-height: 400px;
+  min-width: 340px;
   background-color: antiquewhite;
+  margin: 1em auto
 }
-/* background-size: cover;
-background-position: center; */
+
+@media (min-width: 800px){
+  .fp-left,
+  .fp-right {
+    width: 50%
+  }
+
+  .fp-right {
+    margin: 0
+  }
+}
 
 .fp-title {
   display: flex;
   justify-content: center;
-  width: 90%;
 }
 
 .fp-title h1 {
@@ -133,48 +281,32 @@ background-position: center; */
   margin: 0%;
   color: rgb(28, 28, 138);
   line-height: 95%;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 .fp-title h3 {
   font-size: 3rem;
   margin: 0%;
   color: white;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 .fp-title h2 {
   font-size: 1.5rem;
   margin-top: 30px;
   color: white;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 .fp-buttons {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  width: 100%
+  width: 100%;
 }
 
 #fp-button-campuses {
   margin-left: 30px;
-}
-
-
-/* ----------Backdrop.js CSS---------- */
-
-.backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000000e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 20%;
 }
 
 /* ----------Modals CSS---------- */
@@ -190,7 +322,7 @@ background-position: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .bg-modal {
@@ -207,7 +339,7 @@ background-position: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .add-studentModal {
@@ -220,7 +352,7 @@ background-position: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .add-campusModal {
@@ -233,7 +365,7 @@ background-position: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .datagrid {
@@ -242,7 +374,7 @@ background-position: center; */
   border: 0;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 #view-campus {
@@ -259,14 +391,11 @@ background-position: center; */
 /* ----- carousel ------ */
 
 .carousel {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.slide{
+
+
+.slide {
   opacity: 0;
   transition-duration: 1s ease;
 }
@@ -274,19 +403,15 @@ background-position: center; */
 .slide.active {
   opacity: 1;
   transition-duration: 1s;
-  transform: scale(1.08);
+  transform: scale(1.00);
 }
 
-.carousel-img {
-  height: 100%
-}
 
 .imgContainer {
   display: flex;
   justify-content: center;
-  width: 25rem;
-  height: 35rem;
   border-radius: 10px;
+  background-color: antiquewhite;
 }
 
 .right-arrow {
@@ -316,5 +441,223 @@ background-position: center; */
 }
 
 .titlePNG > img {
-  height: 100%
+  height: 100%;
+}
+
+/* --- Details1 --- */
+
+.details1 {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url("https://inhale-breather.s3.us-east-2.amazonaws.com/AdobeStock_84812500.jpeg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+.details1 > h2 {
+  color: turquoise;
+  font-weight: bold;
+}
+
+.details1 > h2::after {
+  content: "";
+  display: block;
+  width: 3em;
+  height: 1px;
+  margin: 0.5em auto 1em;
+  background: white;
+  opacity: 0.25;
+}
+
+.contentBlock {
+  max-width: 500px;
+  margin: 1em auto;
+}
+
+.contentBlock > img {
+  height: 0;
+  width: 0;
+}
+
+.contentBlock > h3 {
+  font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  .contentList {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .contentBlock {
+    margin-left: 2em;
+  }
+
+  .contentBlock > p {
+    height: 250px;
+  }
+
+  .details1{
+    min-height: 600px;
+  }
+
+  .contentBlock > img {
+    height: 140px;
+    width: 140px;
+    margin-top: 40px;
+  }
+}
+
+/* --- Details2 --- */
+
+.details2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  text-align: center;
+  padding: 1em;
+}
+
+.firstTitle,
+.secondTitle {
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin-top: 1em;
+  max-width: 400px;
+}
+
+.firstTitle{color: grey;}
+
+.secondTitle {color: #ff8c00;}
+
+.details2 > p {
+  max-width: 150px;
+  margin: 1em auto;
+  margin-bottom: 2em;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.details2-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto;
+  width: 360px;
+}
+
+.details2-block > h3 {
+  color: #00008b;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin-right: 1em;
+  text-align: start;
+}
+
+@media (min-width: 800px) {
+  .details2 {
+    font-size: 1.5em;
+  }
+
+.firstTitle,
+.secondTitle {
+  max-width: 800px;
+}
+
+
+  .details2 > p {
+    max-width: 800px;
+  }
+
+  .details2-block {
+    width: 600px;
+  }
+
+}
+
+/* --- Features --- */
+.feature-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-first-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-first-block > h1{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.feature-first-block > h1::after{
+  content: "";
+  display: block;
+  width: 3em;
+  height: 1px;
+  margin: 0.5em auto 1em;
+  background: black;
+  opacity: 0.25;
+}
+
+.feature-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+.feature-text > h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+.feature-text > h2::first-line {
+  color: #654321;
+  font-weight: bold;
+}
+
+@media (min-width: 800px){
+  .feature-section {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .feature-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 5em;
+  }
+  .feature-images{
+    width: 50%
+  }
+
+  .feature-images > img{
+    margin-top: 1em;
+  }
+}
+
+/* --- Footer --- */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  height: 10rem;
+  background-color: #111;
+  padding-top: 2em;
+  margin-bottom: 0
+}
+
+.footer > h2 {
+  font-size: 1.5rem;
+  color: white;
+  font-family: "Merriweather", serif;
 }
