@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { content, inputs } from "../design";
 import { Button } from "@mui/material";
@@ -6,12 +6,18 @@ import { useNavigate } from "react-router-dom";
 import ForumIcon from "@mui/icons-material/Forum";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import Carousel from "./Carousel";
+import Testimonials from "./Testimonials";
 
 const FrontPage = () => {
+  const [openModal, setOpenModal] = useState( false )
   const navigate = useNavigate();
 
   return (
     <section className="mainBody">
+      <div className={openModal ? 'open-modal' : 'hidden'}>
+        <div><button onClick={() => setOpenModal(false)}>X</button></div>
+        <Testimonials />
+      </div>
         <div className="fp-left">
           <div className="fp-left-wrapper">
             <div className="fp-title">
@@ -46,7 +52,7 @@ const FrontPage = () => {
                         style={{ backgroundColor: "rgb(28, 28, 138)" }}
                         variant="contained"
                         size="large"
-                        onClick={() => navigate.push("/campuses")}
+                        onClick={() => setOpenModal(!openModal)}
                         endIcon={<ForumIcon />}
                       >
                         Testimonials
