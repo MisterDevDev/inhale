@@ -7,7 +7,7 @@ const Features = () => {
         <h1>Design Features</h1>
         <div className="feature-images">
           <img src="https://inhale-breather.s3.us-east-2.amazonaws.com/AdobeStock_399040842.jpeg" />
-          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/060fbd8d-9e76-4694-ac84-3efcee754af4.__CR0,0,970,600_PT0_SX970_V1___.jpg" />
+          <img src="https://inhale-breather.s3.us-east-2.amazonaws.com/dimension_pic.jpg" />
         </div>
       </div>
       <div className="feature-text">
