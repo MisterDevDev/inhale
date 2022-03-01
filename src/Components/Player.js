@@ -7,6 +7,7 @@ const Player = () => {
         <div className="video-player">
             <ReactPlayer 
                 url='https://youtu.be/QPfJImLccTQ'
+                controls
                 width={screenWidth > 800 ? '720px' :'360px'}
                 height={screenWidth > 800 ? '360px' :'180px'}
             />
