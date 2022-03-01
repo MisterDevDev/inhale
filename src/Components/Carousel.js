@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { carouselData } from "./carouselData";
+import { carouselData } from "./data/carousel";
 
 
 const Carousel = () => {

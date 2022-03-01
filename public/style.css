@@ -724,7 +724,8 @@ button:hover {
 .open-modal-content{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   border: 1px solid black;
   opacity:0;
   border: 1px solid black;
@@ -736,6 +737,10 @@ button:hover {
   animation-duration: .8s;
   animation-fill-mode: forwards;
   padding: 2em;
+}
+.scroll{
+  overflow-y: scroll;
+  max-height: 80vh;
 }
 
 .open-modal {
@@ -793,8 +798,64 @@ button:hover {
   color: gold
 }
 
+.close-button {
+  width: 6em;
+  height: 3em;
+  background-color: rgb(28, 28, 138);
+  color: white;
+  margin-bottom: .5em;
+}
+
 @media (min-width: 800px) {
   .open-modal-content{
-    width: 30rem
+    width: 30rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem
   }
+}
+
+/* --- testimonials --- */
+.review-container{
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.review-title{
+  font-weight: bold;
+  margin-left: 3px;
+}
+
+.review-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.review-text{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.review-bottom{
+  margin-top: 10px;
+}
+
+.review-bottom::after {
+  content: "";
+  display: block;
+  width: 3em;
+  height: 1px;
+  margin: 0.75em auto 1em;
+  background: grey;
+  opacity: 0.25;
+}
+
+.review-date {
+  color: grey;
+  font-weight: bold;
+  font-style: italic;
+  font-size: small;
+}
+
+.review-name {
+  font-weight: bold;
+  font-size: small;
 }

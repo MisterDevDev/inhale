@@ -32,9 +32,9 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="navbar__item">
-            <Link to="/amazon" className="navbar-link">
+            <a  className="navbar-link" href="https://www.amazon.com/Inhale-Respiratory-Trainer-Breathing-Exercise/dp/B091L441KW/ref=sr_1_5?crid=36QXB5CVFJQ2L&keywords=inhale+breather&qid=1646154061&sprefix=inhale+breather%2Caps%2C87&sr=8-5">
               <h4 onClick={toggleOff} className="fp-underline">PRODUCT</h4>
-            </Link>
+            </a>
           </li>
           <li className="navbar__item">
             <Button
