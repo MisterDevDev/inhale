@@ -804,6 +804,7 @@ button:hover {
   background-color: rgb(28, 28, 138);
   color: white;
   margin-bottom: .5em;
+  font-weight: bold;
 }
 
 @media (min-width: 800px) {
