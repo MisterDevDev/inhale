@@ -67,9 +67,17 @@ button:hover {
 }
 
 .navbar-logo {
+  display: flex;
+  align-items: center;
   color: white;
   margin-right: auto;
-  margin-left: 2%;
+  margin-left: 0;
+}
+
+.navbar-logo > img{
+  width: 40px;
+  height: 100%;
+  margin-right: 5px;
 }
 
 .navbar-wrapper {
@@ -677,6 +685,10 @@ button:hover {
   font-weight: bold;
 }
 
+.video-player{
+  margin-top: 15px;
+}
+
 @media (min-width: 800px){
   .feature-section {
     flex-direction: row;
@@ -687,6 +699,7 @@ button:hover {
     flex-direction: column;
     align-items: flex-start;
     margin-right: 5em;
+    margin-top: 3rem;
   }
   .feature-images{
     width: 50%
@@ -860,3 +873,4 @@ button:hover {
   font-weight: bold;
   font-size: small;
 }
+

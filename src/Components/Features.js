@@ -1,4 +1,5 @@
 import React from "react";
+import Player from "./Player";
 
 const Features = () => {
   return (
@@ -30,6 +31,7 @@ const Features = () => {
           relatively low cost compared to other breathers, this product offers
           the best value on the market.
         </h2>
+        <Player />
       </div>
     </section>
   );

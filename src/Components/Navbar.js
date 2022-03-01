@@ -14,8 +14,9 @@ const NavBar = () => {
   return (
     <div className={`navbar ${toggle ? 'nav-open' : ''}`}>
       <div className="navbar-logo">
+        <img src='https://inhale-breather.s3.us-east-2.amazonaws.com/logo.jpg' />
         <Link to="/" className="navbar-home">
-          <h3 className="fp-underline">Inhale</h3>
+          <h3 className="fp-underline">Inhale&#8482;</h3>
         </Link>
       </div>
       <button className="nav-toggle" aria-label="toggle naviation"
